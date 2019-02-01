@@ -10,7 +10,7 @@ $pass  = addslashes($_REQUEST['pass'])  or exit ('введите пароль');
 $query = "SELECT id FROM `users` WHERE login = '$login' AND passhash = '$pass'";
 
 $result = mysqli_query($db, $query) or exit ('query failed');
-list($id)=mysqli_fetch_row($result) or exit ('логин или пароль неверный');
+list ($id) = mysqli_fetch_row($result) or exit ('логин или пароль неверный');
 
 echo '{"id": "'.$id.'"}';
 ?>

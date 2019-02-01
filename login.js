@@ -28,7 +28,7 @@ function request(type, url, cb, reportcb) {
 
 function enter(){
   var url = `http://localhost/reg.auth/login.php?login=${login.value}&pass=${pass.value}`;
-  request('POST', url, handler, console.log)
+  request('POST', url, handler, console.log);
 }
 
 function handler(response) {
@@ -36,5 +36,5 @@ function handler(response) {
     response = JSON.parse(response);
     window.location.href = "http://p.acoras.in.ua/todo.php?user_id="+response.id;
   }
-  else console.log(response);
+  else resp.innerText = response;
 }

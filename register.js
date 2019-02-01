@@ -27,7 +27,7 @@ function request(type, url, cb, reportcb) {
 }
 
 function register(){
-  var url = `http://localhost/register.php?login=${login.value}&mail=${
+  var url = `http://localhost/reg.auth/register.php?login=${login.value}&mail=${
             mail.value}&pass=${pass.value}`;
   request('POST', url, console.log, console.log)
 }

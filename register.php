@@ -14,6 +14,8 @@ if (isset($errors)) {
   exit ("These parameters must not be empty: $errors ");
 }
 
+require "password.php";
+$pass = hashStr($pass);
 $query = "INSERT INTO `users` (`mail`, `login`, `passhash`)
           VALUES ('$mail', '$login', '$pass')";
 

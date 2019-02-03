@@ -1,4 +1,3 @@
-
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_PARSE | E_ERROR);
@@ -15,16 +14,16 @@ if (isset($errors)) {
 }
 
 require "password.php";
-$pass = hashStr($pass);
+$hash = hashStr($pass);
 $query = "INSERT INTO `users` (`mail`, `login`, `passhash`)
-          VALUES ('$mail', '$login', '$pass')";
+          VALUES ('$mail', '$login', '$hash')";
 
 function startsWith($str, $substr) {return strpos($str, $substr) === 0;}
 function endsWith($str, $substr) {
   return substr($str, strlen($str)-strlen($substr)) == $substr;
 }
 
-if (mysqli_query($db, $query)) echo "user added";
+if (mysqli_query($db, $query)) echo "регистрация успешна";
 else {
   $error = mysqli_error($db);
   if (startsWith($error, "Duplicate")) {
@@ -36,7 +35,4 @@ else {
   }
   else echo $error;
 }
-
-
-
 ?>

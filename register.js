@@ -29,5 +29,16 @@ function request(type, url, cb, reportcb) {
 function register(){
   var url = `http://localhost/reg.auth/register.php?login=${login.value}&mail=${
             mail.value}&pass=${pass.value}`;
-  request('POST', url, console.log, console.log)
+  request('POST', url, handler, console.log)
+}
+
+function handler(response) {
+  resp.innerText = response+'\n';
+  if (response == "регистрация успешна") {
+    var button = document.createElement('button');
+    button.innerText = 'войти';
+    resp.append(button);
+    button.onclick =
+      () => window.location.href = 'http://localhost/reg.auth/login.html'
+  }
 }

@@ -16,5 +16,6 @@ require "password.php";
 
 
 if (!hashCheck($pass, $hash)) exit ('пароль неверный');
-echo '{"id": "'.$id.'"}';
+$token = randStr();
+echo '{"id": "'.$id.'", "token": "'.$token.'"}';
 ?>

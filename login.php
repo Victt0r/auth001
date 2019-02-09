@@ -14,8 +14,9 @@ $result = mysqli_query($db, $query) or exit ('query failed');
 list ($id, $hash) = mysqli_fetch_row($result) or exit ('пользователь не найден');
 require "password.php";
 
-
 if (!hashCheck($pass, $hash)) exit ('пароль неверный');
 $token = randStr();
+$query = "UPDATE `users` SET `token`= '$token' WHERE `id` = $id";
+mysqli_query($db, $query) or exit ('query failed');
 echo '{"id": "'.$id.'", "token": "'.$token.'"}';
 ?>

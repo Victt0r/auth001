@@ -7,11 +7,15 @@ $id = $_COOKIE['user_id'] or exit ('авторизуйтесь');
 $token = $_COOKIE['token'] or exit ('авторизуйтесь');
 
 $db = mysqli_connect('localhost', 'root', '', 'baza1');
-$query = "SELECT `token` FROM `users` WHERE `id` = $id";
+$query = "SELECT `id` FROM `users` WHERE `id` = $id AND `token` = '$token'";
 $result = mysqli_query($db, $query) or exit ('query failed');
+mysqli_fetch_row($result) or exit ('пользователь не найден');
 
-if (!(list ($dbToken) = mysqli_fetch_row($result))) exit ('пользователь не найден');
-if ($token !== $dbToken) exit ('авторизуйтесь');
+//$query = "SELECT `token` FROM `users` WHERE `id` = $id";
+//$result = mysqli_query($db, $query) or exit ('query failed');
+//
+//if (!(list ($dbToken) = mysqli_fetch_row($result))) exit ('пользователь не найден');
+//if ($token !== $dbToken) exit ('авторизуйтесь');
 require "password.php";
 $token = randStr();
 $query = "UPDATE `users` SET `token`= '$token' WHERE `id` = $id";

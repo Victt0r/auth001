@@ -16,7 +16,7 @@ require "password.php";
 
 if (!hashCheck($pass, $hash)) exit ('пароль неверный');
 $token = randStr();
-$query = "UPDATE `users` SET `token`= '$token' WHERE `id` = $id";
+$query = "INSERT INTO `sessions`(`user_id`, `token`) VALUES ($id, '$token')";
 mysqli_query($db, $query) or exit ('query failed');
 echo '{"id": "'.$id.'", "token": "'.$token.'"}';
 ?>

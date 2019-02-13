@@ -8,7 +8,12 @@ function handler(response) {
     response = JSON.parse(response);
     setCookie('user_id', response.id, {expires:60*60*24*30});
     setCookie('token', response.token, {expires:60*60*24*30});
-    //window.location.href = "http://p.acoras.in.ua/todo.php?user_id="+response.id;
+    resp.innerText = "Успешно\n";
+    var button = document.createElement('button');
+    button.innerText = 'дальше';
+    resp.append(button);
+    button.onclick =
+      () => window.location.href = 'http://localhost/reg.auth/inside.html'
   }
   else resp.innerText = response;
 

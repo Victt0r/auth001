@@ -11,22 +11,16 @@ $query = "SELECT `id` FROM `users` WHERE `id` = $id AND `token` = '$token'";
 $result = mysqli_query($db, $query) or exit ('query failed');
 mysqli_fetch_row($result) or exit ('пользователь не найден');
 
-//$query = "SELECT `token` FROM `users` WHERE `id` = $id";
-//$result = mysqli_query($db, $query) or exit ('query failed');
-//
-//if (!(list ($dbToken) = mysqli_fetch_row($result))) exit ('пользователь не найден');
-//if ($token !== $dbToken) exit ('авторизуйтесь');
-
 require "password.php";
 $token = randStr();
 $query = "UPDATE `users` SET `token`= '$token' WHERE `id` = $id";
 mysqli_query($db, $query) or exit ('query failed');
 
-$query = "SELECT login FROM `users`";
+$query = "SELECT COUNT(id) FROM `users` WHERE LENGTH(passhash) > 32";
 $result = mysqli_query($db, $query) or exit ('query failed');
-while (list ($login) = mysqli_fetch_row($result)) $logins[] = $login;
+list ($number) = mysqli_fetch_row($result);
 
-$response = array ('logins'=>$logins, 'token'=>$token);
+$response = array ('token'=>$token, 'number'=>$number);
 echo json_encode($response);
 
 ?>

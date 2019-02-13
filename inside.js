@@ -1,4 +1,4 @@
-var url = `http://localhost/reg.auth/inside2.php`;
+var url = `http://localhost/reg.auth/inside.php`;
 request('GET', url, handler, console.log);
 function handler(response) {
   response = JSON.parse(response);

@@ -17,9 +17,6 @@ require "password.php";
 if (!hashCheck($pass, $hash)) exit ('пароль неверный');
 $token = randStr();
 
-$query = "SELECT COUNT(id) FROM sessions WHERE user_id = $id";
-
-
 $query = "DELETE FROM sessions WHERE id IN (SELECT id FROM
           (SELECT id FROM sessions WHERE user_id = $id
           ORDER BY dt_modify DESC LIMIT 10 OFFSET 9) alias)";

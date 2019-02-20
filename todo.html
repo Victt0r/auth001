@@ -3,21 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>ToDo</title>
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-    }
-    #headnav {
-      margin: auto;
-    }
-    nav {
-      border: 1px solid;
-    }
-    nav>span {
-      border-right: 1px solid;
-    }
-  </style>
+  <link rel="stylesheet" href="todo.css">
 </head>
 
 <body>
@@ -26,6 +12,7 @@
     <span>Вера в Себя:</span> <span>87</span>
     <nav style=display:inline-block>
       <span>ToDO</span> <span>Взять Квест</span> <span>Действия</span> <span>Запланированные</span> <span>Хроника</span>
+      <!-- FIXME не понятно что между "кнопками" -->
     </nav>
   </header>
   <section>
@@ -53,7 +40,7 @@
         <td>инерция</td>
       </tr>
     </table>
-    <h3> Отчитайся за вчера: </h3>
+    <h3> Задачи на сегодня: </h3>
     <table>
       <tr>
         <th></th>
@@ -65,7 +52,7 @@
       <tr>
         <td><input type="checkbox"></td>
         <td>+2</td>
-        <td>Бегать на стадионе, 3 круга</td>
+        <td>Читать на англ, 3 круга</td>
         <td>3(5 дней)</td>
         <td>20/25</td>
       </tr>
@@ -78,6 +65,9 @@
       </tr>
     </table>
   </section>
+
+  <!-- TODO finish rewrite of todo -->
+
 
 </body>
 

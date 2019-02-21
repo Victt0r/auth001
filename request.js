@@ -23,5 +23,6 @@ function request(type, url, cb, reportcb) {
       }
     }
   }
+  
   xhr.send()
 };

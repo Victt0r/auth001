@@ -1,3 +1,9 @@
+<?php
+  require_once $_SERVER['DOCUMENT_ROOT'].'connect.php';
+// TODO Adapt tokenCheck
+
+$user_id = 47;
+$query = "
 (SELECT 
 	`executions`.`id`, 
 	`executions`.`is_done`, 
@@ -16,7 +22,7 @@ FROM
 	LEFT JOIN `activities` ON `activities`.`id` = `act_id` 
 	LEFT JOIN `quests` ON `quest_id` = `quests`.`id` 
 WHERE 
-	`executions`.`user_id` = 47 
+	`executions`.`user_id` = $user_id
 	AND `date` = CURRENT_DATE())
 UNION 
 (SELECT 
@@ -37,7 +43,13 @@ FROM
 	LEFT JOIN `activities` ON `activities`.`id` = `act_id` 
 	LEFT JOIN `quests` ON `quest_id` = `quests`.`id` 
 WHERE 
-	`executions`.`user_id` = 47 
+	`executions`.`user_id` = $user_id 
 	AND `date` < CURRENT_DATE() 
 	ANd `executions`.`is_done` IS NULL)
     ORDER BY `date`
+";
+$result = mysqli_query($db, $query) or exit ('query failed');
+while ($data[] = mysqli_fetch_row($result));
+echo json_encode($data);
+
+?>

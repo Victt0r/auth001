@@ -28,6 +28,7 @@ nav>span:last-child {
 tr>* {
   text-align: center;
   padding: 4px;
+  max-width: 250px;
 }
 
 tr>*:nth-child(odd) {

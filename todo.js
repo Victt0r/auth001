@@ -19,6 +19,18 @@ function handler(response) {
   </tr>`
     response.forEach(buildRow);
     function buildRow(row) {
+      ex = {
+        payment: row[2], 
+        activity: row[6], 
+        total: row[7], 
+        done: row[7]-row[8],
+        left: row[8], 
+        value: row[9], 
+        fora: row[10], 
+        pledge: row[9]/row[7]*(row[7]-row[10]),
+        date: row[4]
+      }
+
       var tr = document.createElement('tr');
       //  checkBox
       var td = document.createElement('td');
@@ -28,20 +40,22 @@ function handler(response) {
       td.append(input);
       input.setAttribute('type', 'checkbox');
       td = document.createElement('td');
-      td.innerText = '+'+row[2];
+      td.innerText = '+'+ex.payment;
       tr.append(td);
       td = document.createElement('td');
-      td.innerText = row[6];
+      td.innerText = ex.activity;
       tr.append(td);
       td = document.createElement('td');
-      td.innerText = row[7]-row[8]+'(из '+row[7]+'дней)';
+      td.innerText = ex.done+' (из '+ex.total+' дней)';
       tr.append(td);
       td = document.createElement('td');
-      var pledge = row[9]/row[7]*(row[7]-row[10]);
-      td.innerText = pledge+(pledge==row[9]?'': '/'+row[9]);
+      td.innerText = ex.pledge+(ex.pledge==ex.value?'': '/'+ex.value);
       tr.append(td);
 
-
+// TODO таблица сегодня/вчера/позавчера и т.д.
     }
   }
 }
+// TODO что делаем? (что не делаем) общее, т.з. по окну
+
+// TODO модольное окно

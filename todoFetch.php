@@ -49,7 +49,9 @@ WHERE
     ORDER BY `date`
 ";
 $result = mysqli_query($db, $query) or exit ('query failed');
-while ($data[] = mysqli_fetch_row($result));
+while ($row = mysqli_fetch_row($result)) $data[] = $row;
+
+
 echo json_encode($data);
 
 ?>

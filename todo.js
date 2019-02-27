@@ -4,7 +4,25 @@ request('GET', url, handler, console.log);
 function handler(response) {
   if (response.startsWith("[")) {
     response = JSON.parse(response);
-    console.log(response);
+    
+    var today = new Date(),
+        yyyy = today.getFullYear(),
+        mm = today.getMonth()+1,
+        dd = (today.getDate()>9 ? '' : '0') + today.getDate();
+    mm = (mm>9 ? '' : '0') + mm;
+    today = yyyy+'-'+mm+'-'+dd+' 00:00:00';
+
+    function splitData(arr, str) {
+      var arr1 = [], arr2 = [];
+      for (var el of arr) {
+        if (el[4] == str) arr1.push(el)
+        else arr2.push(el)
+      }
+      return [arr1, arr2];
+    }
+
+    [todayData, beforeData] = splitData(response, today);
+
     // setCookie('user_id', getCookie('user_id'), {expires:60*60*24*30});
     // setCookie('token', response.token, {expires:60*60*24*30});
 

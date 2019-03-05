@@ -33,9 +33,19 @@
         <td>20/25</td>
       </tr>
       <tr>
-        <td><input type="checkbox"></td>
+        <td>
+          <input type="checkbox">
+          <div style=position:absolute;display:flex;flex-direction:column;transform:translateX(-38%)>
+            <div style=display:flex>
+              <button>сделано</button>
+              <button>провалено</button>
+            </div> 
+            <button>подтвердить</button>
+          </div>
+        </td>
         <td>+3</td>
         <td>Изучать программирование, 1час</td>
+        
         <td>6(2 дней)</td>
         <td>инерция</td>
       </tr>
@@ -57,7 +67,15 @@
         <td>20/25</td>
       </tr>
       <tr>
-        <td><input type="checkbox"></td>
+        <td><input id=chb type="checkbox"></td>
+          <script> 
+            chb.onclick = reportButton
+            function reportButton(event){
+              console.log(event)
+              // TODO построить блок кнопок для отчета выполнения
+              // TODO написать обработчики для кнопок блока
+            }
+          </script>
         <td>+3</td>
         <td>Изучать программирование, 1час</td>
         <td>6(2 дней)</td>

@@ -56,13 +56,13 @@ function handler(response) {
           date: row[4]
         }
         var tr = document.createElement('tr');
-        //  checkBox
         var td = document.createElement('td');
         var input = document.createElement('input');
-        table.append(tr);
-        tr.append(td);
-        td.append(input);
         input.setAttribute('type', 'checkbox');
+        // input.setAttribute('date-ex', JSON.stringify(ex));
+        input.ex = ex;
+        td.append(input);
+        tr.append(td);
         td = document.createElement('td');
         td.innerText = '+' + ex.payment;
         tr.append(td);
@@ -75,6 +75,7 @@ function handler(response) {
         td = document.createElement('td');
         td.innerText = ex.pledge + (ex.pledge == ex.value ? '' : '/' + ex.value);
         tr.append(td);
+        table.append(tr);
       }
       dayData.forEach(buildRow);
     }
@@ -98,5 +99,7 @@ function handler(response) {
 
 // TODO setCookie('user_id', getCookie('user_id'), {expires:60*60*24*30});
 // TODO setCookie('token', response.token, {expires:60*60*24*30});
+
+// репорт баттон
 
 // TODO что делаем? (что не делаем) общее

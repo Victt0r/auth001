@@ -1,4 +1,6 @@
 body {
+  min-height: 100vh;
+  margin: 0;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   display: flex;
   flex-direction: column;
@@ -10,7 +12,7 @@ table {
 }
 
 #headnav {
-  margin: auto;
+  margin: 8px auto 0;
 }
 
 nav {

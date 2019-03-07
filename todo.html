@@ -34,7 +34,7 @@
       </tr>
       <tr>
         <td>
-          <input type="checkbox">
+          <input type=checkbox>
           <div style=position:absolute;display:flex;flex-direction:column;transform:translateX(-38%)>
             <div style=display:flex>
               <button>сделано</button>
@@ -67,15 +67,7 @@
         <td>20/25</td>
       </tr>
       <tr>
-        <td><input id=chb type="checkbox"></td>
-          <script> 
-            chb.onclick = reportButton
-            function reportButton(event){
-              console.log(event)
-              // TODO построить блок кнопок для отчета выполнения
-              // TODO написать обработчики для кнопок блока
-            }
-          </script>
+        <td id=td><input id=chb type="checkbox"></td>
         <td>+3</td>
         <td>Изучать программирование, 1час</td>
         <td>6(2 дней)</td>
@@ -88,6 +80,7 @@
 
   <script src=request.js></script>
   <script src=todo.js></script>
+  <script src=reportButtons.js></script>
 </body>
 
 </html>

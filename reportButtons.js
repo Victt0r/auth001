@@ -10,7 +10,7 @@ function reportButtons(event) {
       <button id=fail>провалено</button>
     </div> 
     <button id=firm>подтвердить</button>`
-  td.append(div);
+  this.parentElement.append(div);
   window.rbe = true;
   function handleReportButton(event) {
     const {target} = event;
@@ -30,4 +30,4 @@ function reportButtons(event) {
   }
   document.body.addEventListener('click', handleReportButton);
 }
-  // TODO написать обработчики для кнопок блока
+  // TODO написать обработчики для кнопок блока.

@@ -59,6 +59,7 @@ function handler(response) {
         var td = document.createElement('td');
         var input = document.createElement('input');
         input.setAttribute('type', 'checkbox');
+        input.onclick = reportButtons;
         // input.setAttribute('date-ex', JSON.stringify(ex));
         input.ex = ex;
         td.append(input);
@@ -102,4 +103,4 @@ function handler(response) {
 
 // репорт баттон
 
-// TODO что делаем? (что не делаем) общее
+// TODO что делаем? (что не делаем?) общее

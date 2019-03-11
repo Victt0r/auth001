@@ -9,25 +9,35 @@ function reportButtons(event) {
       <button id=done>сделано</button>
       <button id=fail>провалено</button>
     </div> 
-    <button id=firm>подтвердить</button>`
+    <button id=firm style=display:none>подтвердить</button>`
   this.parentElement.append(div);
   window.rbe = true;
   function handleReportButton(event) {
+
     const {target} = event;
-    if (target == done) console.log("запрос done");
-    else if (target == fail) console.log("запрос fail");
-    else if (target == firm) console.log("запрос confirm");
-    else console.log("закрыть баттонс");
-    // switch (target) {
-    //   case done: console.log("запрос done")
-    //     break;
-    //   case fail: console.log("запрос fail")
-    //     break;
-    //   case firm: console.log("запрос confirm")
-    //     break;
-    //   default: console.log("закрыть баттонс");
-    // }
+    if (target == done) {
+      firm.confirm = 'done'
+      firm.style.display = 'inline-block'
+    }
+    else if (target == fail) {
+      firm.confirm = 'fail'
+      firm.style.display = 'inline-block'
+    }
+    else if (target == firm) {
+      if (firm.confirm == 'done') console.log("запрос yes")
+      else if (firm.confirm == 'fail') console.log("запрос no")
+      div.remove();
+      window.rbe = false
+      document.body.removeEventListener('click', handleReportButton);
+    }
+    else {
+      div.remove();
+      window.rbe = false;
+      document.body.removeEventListener('click', handleReportButton);
+    }
   }
   document.body.addEventListener('click', handleReportButton);
 }
+
+
   // TODO написать обработчики для кнопок блока.
